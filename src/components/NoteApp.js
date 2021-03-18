@@ -11,17 +11,37 @@ class NoteApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      notesData : notesData
+      notesData : notesData,
+      searchValue : ""
     };
+
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
+
+  handleSearchChange(value) {
+    //the source should be the state but if I use that data will be lost after some filtering
+    //for now i am using the notesData but might change later after i do some reading on best practices
+    let filteredNotesData = notesData.filter(note => 
+      note.description.toLowerCase().includes(value.toLowerCase()));
+    this.setState({
+      searchValue : value,
+      notesData : filteredNotesData
+    });
+  }
+
+  handleTabFilterChange(value) {
+    this.setState({
+      searchValue : value
+    });
+}
 
   render() {
     return (
       <Container className="main-container" fixed>
-        <Search />
-        <NoteTab />
+        <Search searchValue = {this.state.searchValue} handleChange = {this.handleSearchChange} />
+        <NoteTab searchValue = {this.state.searchValue} handleChange = {this.handleTabFilterChange}/>
         <ProgressBar notesData = {this.state.notesData}/>
-        <NoteList notesData = {this.state.notesData}/>
+        <NoteList searchValue = {this.state.searchValue} notesData = {this.state.notesData}/>
       </Container>
     )
   }

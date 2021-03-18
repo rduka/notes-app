@@ -6,7 +6,7 @@ function ProgressBar(props) {
     const numberOfNotesCompleted = props.notesData.filter(note => note.completed).length;
     const completedNotesPercetage = (numberOfNotesCompleted / totalNumberOfNotes) * 100;
     const barPercentage = {
-        width: `${completedNotesPercetage}%`
+        width: `${isNaN(completedNotesPercetage) ? 0 : completedNotesPercetage}%`
     };
 
     return  (

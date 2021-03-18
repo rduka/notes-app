@@ -1,8 +1,13 @@
 import React from 'react';
 import NoteItem from './NoteItem';
+import NoNotesFound from './NoNotes';
 import Grid from '@material-ui/core/Grid';
 
 function NoteList(props) {
+
+    if(props.searchValue !== "" && props.notesData.length == 0) {
+        return <NoNotesFound />        
+    }
 
     var noteItemsComponents = props.notesData.map(note => 
         <NoteItem 
