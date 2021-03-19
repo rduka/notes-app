@@ -12,10 +12,12 @@ class NoteApp extends React.Component {
     super(props)
     this.state = {
       notesData : notesData,
-      searchValue : ""
+      searchValue : "",
+      categoryValue : "all"
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleCategoryFilterClick = this.handleCategoryFilterClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
@@ -31,6 +33,16 @@ class NoteApp extends React.Component {
     });
   }
 
+  handleCategoryFilterClick(value) {
+    //the source should be the state but if I use that data will be lost after some filtering
+    //for now i am using the notesData but might change later after i do some reading on best practices
+    let filteredNotesData = notesData.filter(note => value === "all" || note.category === value);
+    this.setState({
+      categoryValue : value,
+      notesData : filteredNotesData
+    });
+  }
+
   handleTabFilterChange(value) {
     this.setState({
       searchValue : value
@@ -38,7 +50,6 @@ class NoteApp extends React.Component {
   }
 
   handleDeleteClick(id) {
-    
     this.setState(prevState => {
       let filteredNotesData = prevState.notesData.filter(note => note.id !== id);
       return {
@@ -51,9 +62,17 @@ class NoteApp extends React.Component {
   render() {
     return (
       <Container className="main-container" fixed>
-        <Search searchValue = {this.state.searchValue} handleChange = {this.handleSearchChange} />
-        <NoteTab searchValue = {this.state.searchValue} handleChange = {this.handleTabFilterChange}/>
-        <ProgressBar notesData = {this.state.notesData}/>
+        <Search 
+          searchValue = {this.state.searchValue} 
+          handleChange = {this.handleSearchChange} 
+        />
+        <NoteTab 
+          searchValue = {this.state.searchValue} 
+          categoryValue = {this.state.categoryValue}
+          handleClick = {this.handleCategoryFilterClick}/>
+        <ProgressBar 
+          notesData = {this.state.notesData}
+        />
         <NoteList 
           searchValue = {this.state.searchValue} 
           notesData = {this.state.notesData}

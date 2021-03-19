@@ -104,6 +104,7 @@ body {
   margin-right: 18px !important;
   font-weight: 300;
   width: 89px;
+  font-weight: 300 !important;
 }
 
 .add-note-btn {
@@ -250,6 +251,16 @@ body {
   right: 90px;
 }
 
+.all-btn {
+  background: #69BCFF 0% 0% no-repeat padding-box !important;
+  color: #FFFFFF !important;
+}
+
+.home-btn {
+  background: #FF9100 0% 0% no-repeat padding-box !important;
+  color: #FFFFFF !important;
+}
+
 .home-btn-span {
   background: #FF9100 0% 0% no-repeat padding-box;
   opacity: 1;
@@ -262,6 +273,11 @@ body {
   right: 42px;
 }
 
+.work-btn {
+  background: #5C6BC0 0% 0% no-repeat padding-box !important;
+  color: #FFFFFF !important;
+}
+
 .work-btn-span {
   background: #5C6BC0 0% 0% no-repeat padding-box;
   opacity: 1;
@@ -272,6 +288,11 @@ body {
   position: absolute;
   top: 25px;
   right: 42px;
+}
+
+.personal-btn {
+  background: #66BB6A 0% 0% no-repeat padding-box !important;
+  color: #FFFFFF !important;
 }
 
 .personal-btn-span {
