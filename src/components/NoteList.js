@@ -1,6 +1,7 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 import NoNotesFound from './NoNotes';
+import DeleteNote from './DeleteNote';
 import Grid from '@material-ui/core/Grid';
 
 function NoteList(props) {
@@ -18,6 +19,7 @@ function NoteList(props) {
             category = {note.category}
             completed = {note.completed}
             createdDate = {note.createdDate}
+            handleDeleteClick = {props.handleDeleteClick}
         />
     );
 

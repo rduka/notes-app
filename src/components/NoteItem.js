@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteNote from './DeleteNote'
 
 function NoteItem(props) {
     const noteItemClass = getNoteItemClass(props.completed, props.category);
@@ -19,7 +19,11 @@ function NoteItem(props) {
                     /> 
                     <label className="note-item-title">{props.title}</label>
                     <EditIcon className="note-edit-icon" />
-                    <DeleteIcon className="note-delete-icon" />
+                    <DeleteNote 
+                        key={props.id} 
+                        id={props.id} 
+                        handleDeleteClick={props.handleDeleteClick}
+                    />
                     <p>
                         {props.description}
                     </p>

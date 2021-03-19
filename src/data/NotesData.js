@@ -30,6 +30,14 @@ const notesData = [
         category: "work",
         createdDate: "2021-03-18",
         completed: true
+    },
+    {
+        id: 5,
+        title: "Fifth Title Of Note",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+        category: "work",
+        createdDate: "2021-03-19",
+        completed: true
     }
 ];
 

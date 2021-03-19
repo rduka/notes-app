@@ -210,6 +210,46 @@ body {
   opacity: 0.6;
 }
 
+.note-delete-container {
+  display: inline;
+}
+
+.note-delete-popper {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  width: 350px;
+  height: 114px;
+  padding: 0 10px;
+}
+
+.note-delete-title {
+  font-size: 16px;
+  letter-spacing: 0px;
+  color: #00000099;
+  padding-left: 8px;
+}
+
+.note-delete-btn {
+  letter-spacing: 1.25px;
+  color: #03A9F4 !important;
+  text-transform: uppercase;
+  opacity: 1;
+  margin-top: 15px !important;
+  position: absolute !important;
+  right: 15px;
+}
+
+.note-cancel-btn {
+  letter-spacing: 1.25px;
+  color: #03A9F4 !important;
+  text-transform: uppercase;
+  opacity: 1;
+  margin-top: 15px !important;
+  position: absolute !important;
+  right: 90px;
+}
+
 .home-btn-span {
   background: #FF9100 0% 0% no-repeat padding-box;
   opacity: 1;
