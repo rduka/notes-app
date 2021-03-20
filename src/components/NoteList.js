@@ -1,7 +1,6 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 import NoNotesFound from './NoNotes';
-import DeleteNote from './DeleteNote';
 import Grid from '@material-ui/core/Grid';
 
 function NoteList(props) {

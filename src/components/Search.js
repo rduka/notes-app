@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import SearchIcon from '@material-ui/icons/Search';
 
 function Search(props) {
     return  (
@@ -12,6 +13,7 @@ function Search(props) {
                     value = {props.searchValue}
                     onChange = {(event) => props.handleChange(event.target.value)}
                 />
+                <SearchIcon className="search-icon" />
             </Grid>
         </Grid>
     );

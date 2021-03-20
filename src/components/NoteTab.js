@@ -1,4 +1,5 @@
 import React from 'react';
+import AddNote from './AddNote'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -44,13 +45,7 @@ function NoteTabs(props) {
             <Grid item xs={1} sm={2}>
             </Grid>
             <Grid item xs={12} sm={3}>
-                <Button 
-                  className="add-note-btn" 
-                  variant="contained" 
-                  startIcon={<AddIcon />}
-                >
-                  Add Note
-                </Button>
+                <AddNote />
             </Grid>
         </Grid>
     </div>

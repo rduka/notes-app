@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteNote from './DeleteNote'
+import EditNote from './EditNote'
 
 function NoteItem(props) {
     const noteItemClass = getNoteItemClass(props.completed, props.category);
@@ -19,7 +19,12 @@ function NoteItem(props) {
                         onChange = {() => props.handleCompleteChange(props.id)}
                     /> 
                     <label className="note-item-title">{props.title}</label>
-                    <EditIcon className="note-edit-icon" />
+                    <EditNote 
+                         id = {props.id}
+                         title = {props.title} 
+                         description = {props.description}
+                         category = {props.category}
+                    />
                     <DeleteNote 
                         key={props.id} 
                         id={props.id} 

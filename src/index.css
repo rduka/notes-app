@@ -1,10 +1,11 @@
 * {
   font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   background: #F5F5F5 0% 0% no-repeat padding-box;
   /* box-shadow: 0px 3px 6px #00000029; */
   opacity: 1;
@@ -14,35 +15,44 @@ body {
   max-width: 874px !important;
   padding-top: 64px;
   /* border: solid 1px lightgray; */
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 20px;
 }
 
-/* .search-bar-container {
-
-} */
+.search-bar-container {
+  position: relative;
+  
+}
 
 .search-bar-input {
-  max-width: 777px;
   height: 46px;
   width: 100%;
   text-align: left;
-  font: normal normal normal 18px/24px Roboto;
+  font-size: 18px;
   letter-spacing: 0px;
   color: #00000099;
-  opacity: 0.8;
-  padding-left: 45px;
-  background-image: url(images/search.svg);
-  background-color: white;
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
-  background-position: 20px 15px;
+  opacity: 0.6;
+  padding-left: 50px;
   border: 0;
 
   box-shadow: 0px 3px 6px #00000029;
+  margin-top: 64px;
 }
 
 .search-bar-input:focus {
   outline: none;
   box-shadow: 0px 6px 9px #00000029;
+}
+
+.search-icon {
+  position: absolute;
+  top: 77%;
+  left: 20px;
+  transform: translateY(-50%);
+  opacity: .5;
 }
 
 .progress-bar-container {
@@ -51,7 +61,7 @@ body {
 
 .progress-bar-container label {
   text-align: left;
-  font: normal normal medium 18px Roboto;
+  font-size: 18px;
   letter-spacing: 0px;
   color: #00000099;
   opacity: 1;
@@ -125,8 +135,8 @@ body {
 }
 
 .note-item-container {
-  max-width: 375px;
-  height: 174px;
+  /* max-width: 375px; */
+  /* height: 185px; */
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 4px;
   opacity: 1;
@@ -168,7 +178,7 @@ body {
   /* padding-top: 5px; */
   letter-spacing: 0.5px;
   float: left;
-  width: 265px; /*not the best way to handle... todo this*/
+  width: 278px; /*not the best way to handle... todo this*/
 }
 
 .note-item-date {
@@ -176,6 +186,8 @@ body {
   opacity: 0.8;
   font-size: 15px;
   font-weight: 300;
+  padding-top: 10px;
+  display: block;
 }
 
 .note-item-content p {
@@ -195,12 +207,17 @@ body {
   opacity: 0.6;
 }
 
+.edit-note-container {
+  display: inline;
+}
+
 .note-edit-icon {
   /* float: right; */
   display: flex;
   cursor: pointer;
   padding-left: 10px;
   opacity: 0.6;
+  width: 38px !important;
 }
 
 .note-delete-icon {
@@ -209,10 +226,12 @@ body {
   cursor: pointer;
   padding-left: 10px;
   opacity: 0.6;
+  width: 38px !important;
 }
 
 .note-delete-container {
   display: inline;
+  float: right;
 }
 
 .note-delete-popper {
@@ -221,7 +240,7 @@ body {
   opacity: 1;
   width: 350px;
   height: 114px;
-  padding: 0 10px;
+  padding: 20px 10px;
 }
 
 .note-delete-title {
@@ -236,7 +255,7 @@ body {
   color: #03A9F4 !important;
   text-transform: uppercase;
   opacity: 1;
-  margin-top: 15px !important;
+  margin-top: 30px !important;
   position: absolute !important;
   right: 15px;
 }
@@ -246,7 +265,7 @@ body {
   color: #03A9F4 !important;
   text-transform: uppercase;
   opacity: 1;
-  margin-top: 15px !important;
+  margin-top: 30px !important;
   position: absolute !important;
   right: 90px;
 }
@@ -264,12 +283,12 @@ body {
 .home-btn-span {
   background: #FF9100 0% 0% no-repeat padding-box;
   opacity: 1;
-  width: 6px;
-  height: 6px;
-  border-radius: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
   display: block;
   position: absolute;
-  top: 25px;
+  top: 27px;
   right: 42px;
 }
 
@@ -281,12 +300,12 @@ body {
 .work-btn-span {
   background: #5C6BC0 0% 0% no-repeat padding-box;
   opacity: 1;
-  width: 6px;
-  height: 6px;
-  border-radius: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
   display: block;
   position: absolute;
-  top: 25px;
+  top: 27px;
   right: 42px;
 }
 
@@ -298,12 +317,12 @@ body {
 .personal-btn-span {
   background: #66BB6A 0% 0% no-repeat padding-box;
   opacity: 1;
-  width: 6px;
-  height: 6px;
-  border-radius: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
   display: block;
   position: absolute;
-  top: 25px;
+  top: 27px;
   right: 42px;
 }
 
@@ -327,3 +346,126 @@ body {
 /* .footer {
 
 } */
+
+.note-form-container {
+  max-width: 874px !important;
+  /* width: 824px; */
+  /* height: 458px;   */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 4px;
+  opacity: 1;
+  /* margin: 140px auto 0 auto; */
+  padding: 0 !important;
+  margin-top: 140px;
+}
+
+.form-title {
+  text-align: left;
+  letter-spacing: 0px;
+  color: #00000099;
+  opacity: 0.8;
+  padding: 0;
+  margin: 0;
+  padding: 5px 34px 0 34px;
+  border-bottom: solid 2px lightgrey;
+}
+
+.form-title h2 {
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  padding: 17px 0;
+}
+
+.note-form-description-container {
+  padding: 15px 34px 10px 34px;
+}
+
+.note-form-description {
+  width: 100%;
+  height: 200px;
+  background: #F4F4F4 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+
+  text-align: left;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  color: #00000099;
+
+  padding: 15px;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.note-form-title-container {
+  padding: 20px 34px 0 34px;
+
+}
+
+.note-form-title {
+  width: 100%;
+  height: 48px;
+  text-align: left;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  color: #00000099;
+
+  background: #F4F4F4 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.note-form-category {
+  width: 100%;
+  height: 48px;
+  text-align: left;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  color: #00000099;
+
+  background: #F4F4F4 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  resize: none;
+
+  /* -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  appearance: none; */
+}
+
+.note-form-add-btn {
+  letter-spacing: 1.25px;
+  color: #03A9F4 !important;
+  text-transform: uppercase;
+  opacity: 1;
+  float: right;
+}
+
+.note-form-cancel-btn {
+  letter-spacing: 1.25px;
+  color: #03A9F4 !important;
+  text-transform: uppercase;
+  opacity: 1;
+  float: right;
+}
+
+
+/*this is some workaround for a bug in displaying the modal
+if i do not add a child element as a wraper it complains and when i do add it, the wraper has a weird otuline*/
+.some-weird-outline-bug {
+  outline: none;
+  color: transparent;
+  background-color: transparent;
+}

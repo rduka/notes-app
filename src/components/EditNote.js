@@ -1,10 +1,10 @@
 import React from 'react';
 import NoteForm from './NoteForm'
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 import Modal from '@material-ui/core/Modal';
 
-function AddNote(props) {
+function EditNote(props) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -17,16 +17,8 @@ function AddNote(props) {
     };
 
     return (
-        <div>
-            <Button 
-                className="add-note-btn" 
-                variant="contained" 
-                startIcon={<AddIcon />}
-                onClick={handleOpen}
-            >
-                Add Note
-            </Button>
-
+        <div className="edit-note-container">
+            <EditIcon className="note-edit-icon" onClick={handleOpen}/>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -34,11 +26,17 @@ function AddNote(props) {
                 aria-describedby="simple-modal-description"
             >
                 <div className="some-weird-outline-bug">
-                    <NoteForm handleCancelClick = {handleClose}/>
+                    <NoteForm 
+                        id = {props.id}
+                        title = {props.title} 
+                        description = {props.description}
+                        category = {props.category}
+                        handleCancelClick = {handleClose}
+                    />
                 </div>
             </Modal>
         </div>
     );
 }
 
-export default AddNote;
+export default EditNote;
