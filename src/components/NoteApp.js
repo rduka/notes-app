@@ -19,6 +19,7 @@ class NoteApp extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleCategoryFilterClick = this.handleCategoryFilterClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleCompleteChange = this.handleCompleteChange.bind(this);
   }
 
   handleSearchChange(value) {
@@ -53,7 +54,26 @@ class NoteApp extends React.Component {
     this.setState(prevState => {
       let filteredNotesData = prevState.notesData.filter(note => note.id !== id);
       return {
-        searchValue : prevState.value,
+        ...prevState.searchValue,
+        ...prevState.categoryValue,
+        notesData : filteredNotesData
+      }
+    });
+  }
+
+  handleCompleteChange(id) {
+    this.setState(prevState => {
+      const filteredNotesData = prevState.notesData.map(note => {
+        if(note.id === id) {
+          note.completed = !note.completed
+        }
+
+        return note;
+      });
+
+      return {
+        ...prevState.searchValue,
+        ...prevState.categoryValue,
         notesData : filteredNotesData
       }
     });
@@ -69,14 +89,17 @@ class NoteApp extends React.Component {
         <NoteTab 
           searchValue = {this.state.searchValue} 
           categoryValue = {this.state.categoryValue}
-          handleClick = {this.handleCategoryFilterClick}/>
+          handleClick = {this.handleCategoryFilterClick}
+        />
         <ProgressBar 
           notesData = {this.state.notesData}
         />
         <NoteList 
           searchValue = {this.state.searchValue} 
           notesData = {this.state.notesData}
-          handleDeleteClick = {this.handleDeleteClick}/>
+          handleDeleteClick = {this.handleDeleteClick}
+          handleCompleteChange = {this.handleCompleteChange}
+        />
       </Container>
     )
   }

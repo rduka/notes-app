@@ -16,6 +16,7 @@ function NoteItem(props) {
                         inputProps={{ 'aria-label': 'checkbox with default color' }}
                         className="note-item-chbx"
                         checked = {props.completed}
+                        onChange = {() => props.handleCompleteChange(props.id)}
                     /> 
                     <label className="note-item-title">{props.title}</label>
                     <EditIcon className="note-edit-icon" />

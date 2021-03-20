@@ -20,6 +20,7 @@ function NoteList(props) {
             completed = {note.completed}
             createdDate = {note.createdDate}
             handleDeleteClick = {props.handleDeleteClick}
+            handleCompleteChange = {props.handleCompleteChange}
         />
     );
 
