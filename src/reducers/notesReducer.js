@@ -9,12 +9,50 @@ const initState = {
   
 function notesReducer(state = initState, action) {
     switch (action.type) {
+        case actions.SEARCH_NOTE: {
+            return {
+                ...state,
+                search: action.payload.search
+            };
+        }
+        case actions.CHANGE_CATEGORY: {
+            return {
+                ...state,
+                category: action.payload.category
+            };
+        }
         case actions.ADD_NOTE: {
             let note = action.payload.note;
             note.id = state.notes.length + 1;
+            note.createdDate = new Date().toISOString().slice(0,10);
             return {
                 ...state,
-                notes: state.notes.concat(note)
+                notes: [note, ...state.notes]
+            };
+        }
+        case actions.EDIT_NOTE: {
+            let note = action.payload.note;
+            return {
+                ...state,
+                notes: state.notes.map(n => 
+                    n.id === note.id 
+                    ? {...n, title: note.title, description: note.description, category: note.category} 
+                    : n
+                )
+            };
+        }
+        case actions.COMPLETE_NOTE: {
+            return {
+                ...state,
+                notes: state.notes.map(note => 
+                    note.id === action.payload.id ? {...note, completed: !note.completed} : note
+                )
+            };
+        }
+        case actions.DELETE_NOTE: {
+            return {
+                ...state,
+                notes: state.notes.filter(note => note.id !== action.payload.id)
             };
         }
         default: {

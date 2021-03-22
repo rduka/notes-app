@@ -5,11 +5,18 @@ import Grid from '@material-ui/core/Grid';
 
 function NoteList(props) {
 
-    if(props.searchValue !== "" && props.notesData.length == 0) {
+    // get notes taking in consideration search key words and tab category
+    const notesDataset = props.notes.filter(note => 
+        (props.search === "" || note.description.toLowerCase().includes(props.search.toLowerCase()) ||
+         note.title.toLowerCase().includes(props.search.toLowerCase()) ) &&
+        (props.category === "all" || note.category.toLowerCase() === props.category.toLowerCase())
+    );
+
+    if(props.search !== "" && notesDataset.length === 0) {
         return <NoNotesFound />        
     }
 
-    var noteItemsComponents = props.notesData.map(note => 
+    var noteItemsComponents = notesDataset.map(note => 
         <NoteItem 
             key = {note.id}
             id = {note.id}
@@ -18,8 +25,6 @@ function NoteList(props) {
             category = {note.category}
             completed = {note.completed}
             createdDate = {note.createdDate}
-            handleDeleteClick = {props.handleDeleteClick}
-            handleCompleteChange = {props.handleCompleteChange}
         />
     );
 

@@ -2,7 +2,8 @@ import React from 'react';
 import AddNote from './AddNote'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
+import { connect } from "react-redux";
+import changeCategory from '../actions/changeCategory';
 
 function NoteTabs(props) {
 
@@ -12,14 +13,14 @@ function NoteTabs(props) {
             <Grid item xs={12} sm={7}>
                 <Button 
                   value="all" 
-                  className={`tab-btn ${props.categoryValue === "all" ? "all-btn" : ""}`}
+                  className={`tab-btn ${props.category === "all" ? "all-btn" : ""}`}
                   onClick={() => props.handleClick("all")}
                 >
                   All
                 </Button>
                 <Button 
                   value="home" 
-                  className={`tab-btn ${props.categoryValue === "home" ? "home-btn" : ""}`}
+                  className={`tab-btn ${props.category === "home" ? "home-btn" : ""}`}
                   endIcon={<span className="home-btn-span"></span>}
                   onClick={() => props.handleClick("home")}
                 >
@@ -27,7 +28,7 @@ function NoteTabs(props) {
                 </Button>
                 <Button 
                   value="work" 
-                  className={`tab-btn ${props.categoryValue === "work" ? "work-btn" : ""}`}
+                  className={`tab-btn ${props.category === "work" ? "work-btn" : ""}`}
                   endIcon={<span className="work-btn-span"></span>}
                   onClick={() => props.handleClick("work")}
                 >
@@ -35,7 +36,7 @@ function NoteTabs(props) {
                 </Button>
                 <Button 
                   value="personal" 
-                  className={`tab-btn ${props.categoryValue === "personal" ? "personal-btn" : ""}`}
+                  className={`tab-btn ${props.category === "personal" ? "personal-btn" : ""}`}
                   endIcon={<span className="personal-btn-span"></span>}
                   onClick={() => props.handleClick("personal")}
                 >
@@ -52,4 +53,10 @@ function NoteTabs(props) {
   );
 }
 
-export default NoteTabs;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleClick: (value)=> dispatch(changeCategory(value))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NoteTabs);

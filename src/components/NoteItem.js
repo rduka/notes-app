@@ -3,10 +3,14 @@ import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteNote from './DeleteNote'
 import EditNote from './EditNote'
+import { connect } from "react-redux";
+import completeNote from '../actions/completeNote';
 
 function NoteItem(props) {
     const noteItemClass = getNoteItemClass(props.completed, props.category);
     const formatedDate = getFormatedDate(props.createdDate);
+    const title = props.title.length > 30 ? props.title.substring(1, 30) + "..." : props.title;
+    const description = props.description.length > 318 ? props.description.substring(1, 318) + "..." : props.description;
     return (
         <Grid item xs={12} sm={6}>
             <div className={`note-item-container ${noteItemClass}`}>
@@ -18,7 +22,7 @@ function NoteItem(props) {
                         checked = {props.completed}
                         onChange = {() => props.handleCompleteChange(props.id)}
                     /> 
-                    <label className="note-item-title">{props.title}</label>
+                    <label className="note-item-title">{title}</label>
                     <EditNote 
                          id = {props.id}
                          title = {props.title} 
@@ -31,7 +35,7 @@ function NoteItem(props) {
                         handleDeleteClick={props.handleDeleteClick}
                     />
                     <p>
-                        {props.description}
+                        {description}
                     </p>
                     <label className="note-item-date">
                         {formatedDate}
@@ -45,20 +49,24 @@ function NoteItem(props) {
 function getNoteItemClass(completed, category) {
     let noteItemClass = "";
 
+    if (category === undefined || category === "") {
+        return noteItemClass;
+    }
+
     if(completed) {
         noteItemClass += " note-item-completed";
         return noteItemClass;
     }
 
-    if (category === "home") {
+    if (category.toLowerCase() === "home") {
         noteItemClass += " note-item-home";
     }
 
-    if (category === "work") {
+    if (category.toLowerCase() === "work") {
         noteItemClass += " note-item-work";
     }
 
-    if (category === "personal") {
+    if (category.toLowerCase() === "personal") {
         noteItemClass += " note-item-personal";
     }
 
@@ -73,4 +81,10 @@ function getFormatedDate(date) {
     return shortMonth + " " + day + ", " + year;
 }
 
-export default NoteItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleCompleteChange: (value)=> dispatch(completeNote(value))
+    }
+}
+  
+export default connect(null, mapDispatchToProps)(NoteItem);

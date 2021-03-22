@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button';
 import Popper from "@material-ui/core/Popper";
 import DeleteIcon from '@material-ui/icons/Delete';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { connect } from "react-redux";
+import deleteNote from '../actions/deleteNote';
 
 function DeleteNote(props) {
 
@@ -51,4 +53,10 @@ function DeleteNote(props) {
   );
 }
 
-export default DeleteNote;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleDeleteClick: (value)=> dispatch(deleteNote(value))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DeleteNote);

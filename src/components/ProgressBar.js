@@ -2,8 +2,8 @@ import React from 'react';
 
 function ProgressBar(props) {
     
-    const totalNumberOfNotes = props.notesData.length;
-    const numberOfNotesCompleted = props.notesData.filter(note => note.completed).length;
+    const totalNumberOfNotes = props.notes.length;
+    const numberOfNotesCompleted = props.notes.filter(note => note.completed).length;
     const completedNotesPercetage = (numberOfNotesCompleted / totalNumberOfNotes) * 100;
     const barPercentage = {
         width: `${isNaN(completedNotesPercetage) ? 0 : completedNotesPercetage}%`

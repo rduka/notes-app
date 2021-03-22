@@ -1,6 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
+import { connect } from "react-redux";
+import searchNotes from '../actions/searchNotes';
 
 function Search(props) {
     return  (
@@ -10,7 +12,7 @@ function Search(props) {
                     type="text" 
                     placeholder="Search notes..." 
                     className="search-bar-input" 
-                    value = {props.searchValue}
+                    value = {props.search}
                     onChange = {(event) => props.handleChange(event.target.value)}
                 />
                 <SearchIcon className="search-icon" />
@@ -18,5 +20,11 @@ function Search(props) {
         </Grid>
     );
 }
-
-export default Search;
+  
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChange: (value)=> dispatch(searchNotes(value))
+    }
+}
+  
+export default connect(null, mapDispatchToProps)(Search);
