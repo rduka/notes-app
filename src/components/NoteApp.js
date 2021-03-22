@@ -6,6 +6,7 @@ import NoteList from './NoteList';
 import NoteTab from './NoteTab';
 import Container from '@material-ui/core/Container';
 import notesData from '../data/NotesData';
+import store from '../store/notesStore'
 
 class NoteApp extends React.Component {
   constructor(props) {
@@ -20,6 +21,11 @@ class NoteApp extends React.Component {
     this.handleCategoryFilterClick = this.handleCategoryFilterClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleCompleteChange = this.handleCompleteChange.bind(this);
+
+    store.subscribe(() => { 
+      console.log("test");
+      console.log(store.getState());
+    })
   }
 
   handleSearchChange(value) {
