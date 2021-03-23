@@ -8,34 +8,34 @@ import completeNote from '../actions/completeNote';
 
 function NoteItem(props) {
     const noteItemClass = getNoteItemClass(props.completed, props.category);
-    const formatedDate = getFormatedDate(props.createdDate);
-    const title = props.title.length > 30 ? props.title.substring(1, 30) + "..." : props.title;
-    const description = props.description.length > 318 ? props.description.substring(1, 318) + "..." : props.description;
+    const formatedDate = getFormatedDate(props.updatedDate);
     return (
         <Grid item xs={12} sm={6}>
             <div className={`note-item-container ${noteItemClass}`}>
                 <div className="note-item-content">
-                    <Checkbox
-                        color="default"
-                        inputProps={{ 'aria-label': 'checkbox with default color' }}
-                        className="note-item-chbx"
-                        checked = {props.completed}
-                        onChange = {() => props.handleCompleteChange(props.id)}
-                    /> 
-                    <label className="note-item-title">{title}</label>
-                    <EditNote 
-                         id = {props.id}
-                         title = {props.title} 
-                         description = {props.description}
-                         category = {props.category}
-                    />
-                    <DeleteNote 
-                        key={props.id} 
-                        id={props.id} 
-                        handleDeleteClick={props.handleDeleteClick}
-                    />
+                    <div className="note-item-header">
+                        <Checkbox
+                            color="default"
+                            inputProps={{ 'aria-label': 'checkbox with default color' }}
+                            className="note-item-chbx"
+                            checked = {props.completed}
+                            onChange = {() => props.handleCompleteChange(props.id)}
+                        /> 
+                        <label className="note-item-title">{props.title}</label>
+                        <EditNote 
+                            id = {props.id}
+                            title = {props.title} 
+                            description = {props.description}
+                            category = {props.category}
+                        />
+                        <DeleteNote 
+                            key={props.id} 
+                            id={props.id} 
+                            handleDeleteClick={props.handleDeleteClick}
+                        />
+                    </div>
                     <p>
-                        {description}
+                        {props.description}
                     </p>
                     <label className="note-item-date">
                         {formatedDate}

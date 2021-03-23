@@ -1,9 +1,14 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 import NoNotesFound from './NoNotes';
+import NoNotesAdded from './NoNotesAdded';
 import Grid from '@material-ui/core/Grid';
 
 function NoteList(props) {
+
+    if(props.notes.length === 0) {
+        return <NoNotesAdded />        
+    }
 
     // get notes taking in consideration search key words and tab category
     const notesDataset = props.notes.filter(note => 
@@ -25,6 +30,7 @@ function NoteList(props) {
             category = {note.category}
             completed = {note.completed}
             createdDate = {note.createdDate}
+            updatedDate = {note.updatedDate}
         />
     );
 

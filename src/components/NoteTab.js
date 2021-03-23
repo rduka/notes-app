@@ -10,7 +10,7 @@ function NoteTabs(props) {
   return (
     <div className="note-tabs-container">
         <Grid container spacing={2}>
-            <Grid item xs={12} sm={7}>
+            <Grid item xs={12} sm={9}>
                 <Button 
                   value="all" 
                   className={`tab-btn ${props.category === "all" ? "all-btn" : ""}`}
@@ -21,7 +21,7 @@ function NoteTabs(props) {
                 <Button 
                   value="home" 
                   className={`tab-btn ${props.category === "home" ? "home-btn" : ""}`}
-                  endIcon={<span className="home-btn-span"></span>}
+                  endIcon={<span className="home-btn-span">&#8226;</span>}
                   onClick={() => props.handleClick("home")}
                 >
                   Home
@@ -29,7 +29,7 @@ function NoteTabs(props) {
                 <Button 
                   value="work" 
                   className={`tab-btn ${props.category === "work" ? "work-btn" : ""}`}
-                  endIcon={<span className="work-btn-span"></span>}
+                  endIcon={<span className="work-btn-span">&#8226;</span>}
                   onClick={() => props.handleClick("work")}
                 >
                   Work
@@ -37,13 +37,11 @@ function NoteTabs(props) {
                 <Button 
                   value="personal" 
                   className={`tab-btn ${props.category === "personal" ? "personal-btn" : ""}`}
-                  endIcon={<span className="personal-btn-span"></span>}
+                  endIcon={<span className="personal-btn-span">&#8226;</span>}
                   onClick={() => props.handleClick("personal")}
                 >
                   Personal
                 </Button>
-            </Grid>
-            <Grid item xs={1} sm={2}>
             </Grid>
             <Grid item xs={12} sm={3}>
                 <AddNote />

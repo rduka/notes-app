@@ -82,24 +82,12 @@ body::-webkit-scrollbar-thumb {
   font-weight: 500;
 }
 
-.progress-bar-underlayer {
-  width: 100%;
-  height: 4px;
-  background-color: #2196F3;
-  display: block;
-  margin-top: 8px;
-  opacity: 0.24;
-  z-index: 0;
-  float: left;
+.MuiLinearProgress-colorPrimary {
+  background-color: #c2def4 !important;
 }
 
-.progress-bar {
-  width: 0%;
-  height: 4px;
-  background-color: #2196F3;
-  display: block;
-  margin-top: 8px;
-  z-index: 1;
+.MuiLinearProgress-barColorPrimary {
+  background-color: #2196F3 !important;
 }
 
 .note-tabs-container {
@@ -122,13 +110,13 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0px;
   background-color: none !important;
   color: #00000099 !important;
-  opacity: 0.8;
+  opacity: 1;
   display: inline;
   text-transform: capitalize !important;
   margin-right: 18px !important;
   font-weight: 300;
   width: 89px;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 
 .add-note-btn {
@@ -141,22 +129,9 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   margin-right: 0;
   float: right;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 
-.notes-container {
-  padding: 10px 0;
-}
-
-.note-item-container {
-  /* max-width: 375px; */
-  /* height: 185px; */
-  box-shadow: 0px 3px 6px #00000029;
-  border-radius: 4px;
-  opacity: 1;
-  padding: 14px;
-  color: #FFFFFF;
-}
 
 .note-item-completed {
   background: #282E2999 0% 0% no-repeat padding-box;
@@ -179,6 +154,23 @@ body::-webkit-scrollbar-thumb {
   background: #66BB6A 0% 0% no-repeat padding-box;
 }
 
+.notes-container {
+  padding: 10px 0 30px 0;
+}
+
+.note-item-container {
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 4px;
+  opacity: 1;
+  padding: 14px;
+  color: #FFFFFF;
+}
+
+.note-item-header {
+  position: relative;
+  display: flex;
+}
+
 .note-item-content {
   padding: 0px;
   margin: 0;
@@ -187,12 +179,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 .note-item-title {
+  width: 75%;
   font-size: 20px;
   padding-left: 20px;
   /* padding-top: 5px; */
   letter-spacing: 0.5px;
   float: left;
-  width: 278px; /*not the best way to handle... todo this*/
+  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow: ellipsis;
 }
 
 .note-item-date {
@@ -210,6 +205,17 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.7px;
   opacity: 0.8;
   height: 102px;
+
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 6;
+  -moz-line-clamp: 6;
+  -ms-line-clamp: 6;
+  line-clamp: 6;
   overflow: hidden;
 }
 
@@ -227,25 +233,27 @@ body::-webkit-scrollbar-thumb {
 
 .note-edit-icon {
   /* float: right; */
-  display: flex;
   cursor: pointer;
   padding-left: 10px;
   opacity: 0.6;
   width: 38px !important;
+  position: absolute;
+  right: 35px;
 }
 
 .note-delete-icon {
   /* float: right; */
-  display: flex;
   cursor: pointer;
   padding-left: 10px;
   opacity: 0.6;
   width: 38px !important;
+  position: absolute;
+  right: 0;
 }
 
 .note-delete-container {
   display: inline;
-  float: right;
+  /* float: right; */
 }
 
 .note-delete-popper {
@@ -295,15 +303,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 .home-btn-span {
-  background-color: #FF9100;
+  color: #FF9100;
   opacity: 1;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  display: block;
   position: absolute;
-  top: 27px;
+  top: 5px;
   right: 42px;
+  font-size: 29px !important;
 }
 
 .work-btn {
@@ -312,15 +317,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 .work-btn-span {
-  background-color: #5C6BC0;
+  color: #5C6BC0;
   opacity: 1;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  display: block;
   position: absolute;
-  top: 27px;
+  top: 5px;
   right: 42px;
+  font-size: 29px !important;
 }
 
 .personal-btn {
@@ -329,15 +331,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .personal-btn-span {
-  background-color: #66BB6A;
+  color: #66BB6A;
   opacity: 1;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  display: block;
   position: absolute;
-  top: 27px;
+  top: 5px;
   right: 42px;
+  font-size: 29px !important;
+}
+
+.no-notes-container {
+  padding: 25px 0;
 }
 
 .no-notes-container p {
@@ -346,6 +349,7 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0px;
   color: #00000099;
   opacity: 0.6;
+  margin: 25px 0 50px 0;
 }
 
 .no-notes-img {
@@ -357,12 +361,17 @@ body::-webkit-scrollbar-thumb {
   margin: auto;
 }
 
-/* .footer {
-
-} */
+.add-notes-img {
+  width: 258px;
+  height: 278px;
+  background: transparent url(images/add-note-illustration.svg) 0% 0% no-repeat padding-box;
+  opacity: 1;
+  display: block;
+  margin: auto;
+}
 
 .note-form-container {
-  max-width: 874px !important;
+  max-width: 826px !important;
   /* width: 824px; */
   /* height: 458px;   */
   background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -413,6 +422,24 @@ body::-webkit-scrollbar-thumb {
   resize: none;
 }
 
+.note-form-footer-container {
+  padding: 15px 34px 10px 34px;
+  height: 85px; /*i know*/
+}
+
+.note-form-description::-webkit-scrollbar {
+  width: 1em;
+}
+
+.note-form-description::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #b9babc;
+}
+
+.note-form-description::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  outline: 1px solid #b9babc;
+}
+
 .note-form-title-container {
   padding: 20px 34px 0 34px;
 
@@ -452,11 +479,16 @@ body::-webkit-scrollbar-thumb {
   border: none;
   outline: none;
   resize: none;
+}
 
-  /* -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-  appearance: none; */
+.note-form-category > .MuiSelect-select {
+  background-color: transparent !important;
+  color: #00000099 !important;
+  font-style: none;
+}
+
+.MuiMenu-list {
+  color: #00000099 !important;
 }
 
 .note-form-add-btn {
@@ -464,7 +496,12 @@ body::-webkit-scrollbar-thumb {
   color: #03A9F4 !important;
   text-transform: uppercase;
   opacity: 1;
-  float: right;
+  right: 34px;
+  position: absolute !important;
+}
+
+.note-form-add-btn:disabled {
+  color: #7fcaed !important;
 }
 
 .note-form-cancel-btn {
@@ -472,7 +509,8 @@ body::-webkit-scrollbar-thumb {
   color: #03A9F4 !important;
   text-transform: uppercase;
   opacity: 1;
-  float: right;
+  right: 124px;
+  position: absolute !important;
 }
 
 
@@ -482,4 +520,28 @@ if i do not add a child element as a wraper it complains and when i do add it, t
   outline: none;
   color: transparent;
   background-color: transparent;
+}
+
+[aria-labelledby$="simple-modal-title"] {
+  overflow-y: scroll;
+}
+
+/* .footer {
+
+} */
+
+/* Responsive css */
+
+@media only screen and (max-width: 720px) {
+  .note-item-title {
+    width: 68%;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .note-item-title {
+    width: 77%;
+  }
 }
