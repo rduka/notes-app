@@ -204,7 +204,8 @@ body::-webkit-scrollbar-thumb {
   font-weight: 300;
   letter-spacing: 0.7px;
   opacity: 0.8;
-  height: 102px;
+  height: 92px;
+  padding-top: 7px;
 
   word-break: break-all;
   display: -webkit-box;
@@ -212,10 +213,10 @@ body::-webkit-scrollbar-thumb {
   -moz-box-orient: vertical;
   -ms-box-orient: vertical;
   box-orient: vertical;
-  -webkit-line-clamp: 6;
-  -moz-line-clamp: 6;
-  -ms-line-clamp: 6;
-  line-clamp: 6;
+  -webkit-line-clamp: 5;
+  -moz-line-clamp: 5;
+  -ms-line-clamp: 5;
+  line-clamp: 5;
   overflow: hidden;
 }
 
