@@ -1,4 +1,4 @@
-import * as actions from './actionType';
+import * as actions from '../common/actionType';
 
 function deleteNote(id) {
     return {

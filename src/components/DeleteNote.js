@@ -4,7 +4,7 @@ import Popper from "@material-ui/core/Popper";
 import DeleteIcon from '@material-ui/icons/Delete';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { connect } from "react-redux";
-import deleteNote from '../actions/deleteNote';
+import deleteNote from '../redux/actions/deleteNote';
 
 function DeleteNote(props) {
 
@@ -39,7 +39,7 @@ function DeleteNote(props) {
                 placement="top"
                 modifiers={{
                     arrow: {
-                        enabled: false,
+                        enabled: true,
                         element: arrowRef
                         }
                 }}

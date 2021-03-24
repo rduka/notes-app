@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import { connect } from "react-redux";
-import searchNotes from '../actions/searchNotes';
+import searchNotes from '../redux/actions/searchNotes';
 
 function Search(props) {
     return  (

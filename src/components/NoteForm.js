@@ -3,17 +3,17 @@ import Container from '@material-ui/core/Container';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { connect } from "react-redux";
-import addNote from '../actions/addNote';
-import editNote from '../actions/editNote';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import { connect } from "react-redux";
+import addNote from '../redux/actions/addNote';
+import editNote from '../redux/actions/editNote';
 
 function NoteForm(props) {
 
     //I did not want to use dhe redux state for onChange for these props... neither did i want to use a library to handle the form.
     //decided to use hooks instead.
-    let note = props.id !== undefined ?
+    let formState = props.id !== undefined ?
     {
         id: props.id, 
         title: props.title, 
@@ -28,19 +28,15 @@ function NoteForm(props) {
         description: ""
     }
 
-    const [form, setForm] = React.useState(note);
-    let title = props.id === undefined ? "Add Note" : "Update Note";
-    let button = props.id === undefined ? "Add" : "Update";
-    const formControlStyle = {
-        width: '100%'
-    };
+    const [form, setForm] = React.useState(formState);
 
-    const allowSubmit = form => {
-        if(form.title === "" || form.description === "" || form.category === "") {
-            return false
-        }
-        return true;
-    };
+    function handleChange(event){
+        let {name, value} = event.target;
+        setForm(prevForm => ({
+            ...prevForm,
+            [name]: value
+        }));
+    }
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -55,13 +51,18 @@ function NoteForm(props) {
         props.handleCancelClick(); //This dismisses the modal form.
     };
 
-    function handleChange(event){
-        let {name, value} = event.target;
-        setForm(prevForm => ({
-            ...prevForm,
-            [name]: value
-        }));
-    }
+    const allowSubmit = form => {
+        if(form.title === "" || form.description === "" || form.category === "") {
+            return false
+        }
+        return true;
+    };
+
+    let title = props.id === undefined ? "Add Note" : "Update Note";
+    let button = props.id === undefined ? "Add" : "Update";
+    const formControlStyle = {
+        width: '100%'
+    };
 
     return (
         <Container className="note-form-container" spacing={0} fixed>

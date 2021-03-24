@@ -3,7 +3,7 @@ import AddNote from './AddNote'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
-import changeCategory from '../actions/changeCategory';
+import filterCategory from '../redux/actions/filterCategory';
 
 function NoteTabs(props) {
 
@@ -53,7 +53,7 @@ function NoteTabs(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleClick: (value)=> dispatch(changeCategory(value))
+    handleClick: (value)=> dispatch(filterCategory(value))
   }
 }
 

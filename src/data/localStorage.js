@@ -1,4 +1,4 @@
-import notesData from '../data/NotesData';
+import notesData from './notesMock';
 
 //Save the state data (notes) on localstorage
 export const saveNotes = (notes) => {

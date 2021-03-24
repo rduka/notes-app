@@ -1,13 +1,13 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 import NoNotesFound from './NoNotes';
-import NoNotesAdded from './NoNotesAdded';
 import Grid from '@material-ui/core/Grid';
+import { CSSTransition, Transition, TransitionGroup } from 'react-transition-group';
 
 function NoteList(props) {
 
     if(props.notes.length === 0) {
-        return <NoNotesAdded />        
+        return <NoNotesFound notes={props.notes}/>        
     }
 
     // get notes taking in consideration search key words and tab category
@@ -18,7 +18,7 @@ function NoteList(props) {
     );
 
     if(props.search !== "" && notesDataset.length === 0) {
-        return <NoNotesFound />        
+        return <NoNotesFound notes={props.notes} />        
     }
 
     var noteItemsComponents = notesDataset.map(note => 

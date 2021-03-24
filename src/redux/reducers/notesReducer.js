@@ -1,9 +1,9 @@
-import * as actions from '../actions/actionType';
-import { loadNotes } from '../data/localStorage';
+import * as actions from '../common/actionType';
+import { loadNotes } from '../../data/localStorage';
 
 //Disclaimer!
 //After some reading, the BL is not specified if it should reside in actions or reducers. At least, there is no consesus.
-//For now i am keeping it here and later might change it after working on some real life projects.
+//For now i am keeping it here and later might change it after working on some real life projects and getting more experience.
 
 const initState = {
     notes: loadNotes(),
@@ -13,13 +13,13 @@ const initState = {
   
 function notesReducer(state = initState, action) {
     switch (action.type) {
-        case actions.SEARCH_NOTE: {
+        case actions.SEARCH_NOTES: {
             return {
                 ...state,
                 search: action.payload.search
             };
         }
-        case actions.CHANGE_CATEGORY: {
+        case actions.FILTER_TAB_CATEGORY: {
             return {
                 ...state,
                 category: action.payload.category
@@ -28,8 +28,8 @@ function notesReducer(state = initState, action) {
         case actions.ADD_NOTE: {
             let note = action.payload.note;
             note.id = getNewIdForNote(state.notes); 
-            note.createdDate = new Date().toISOString().slice(0,10);
-            note.updatedDate = new Date().toISOString().slice(0,10);
+            note.createdDate = getFormatedDate();
+            note.updatedDate = getFormatedDate();
             return {
                 ...state,
                 notes: [note, ...state.notes]
@@ -37,7 +37,7 @@ function notesReducer(state = initState, action) {
         }
         case actions.EDIT_NOTE: {
             let note = action.payload.note;
-            note.updatedDate = new Date().toISOString().slice(0,10);
+            note.updatedDate = getFormatedDate();
             return {
                 ...state,
                 notes: state.notes.map(n => 
@@ -48,7 +48,7 @@ function notesReducer(state = initState, action) {
             };
         }
         case actions.COMPLETE_NOTE: {
-            let updatedDate = new Date().toISOString().slice(0,10);
+            let updatedDate = getFormatedDate();
             return {
                 ...state,
                 notes: state.notes.map(note => 
@@ -76,6 +76,10 @@ function getNewIdForNote(notes){
     const idMax = Math.max.apply(Math, notes.map(function(note) { return note.id; }))
     return idMax === undefined ? 1 : idMax + 1;
   }
+}
+
+function getFormatedDate(){
+    return new Date().toISOString().slice(0,10);
 }
 
 export default notesReducer;

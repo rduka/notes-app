@@ -539,10 +539,91 @@ if i do not add a child element as a wraper it complains and when i do add it, t
   }
 }
 
-
-
 @media only screen and (max-width: 600px) {
   .note-item-title {
     width: 77%;
   }
+}
+
+/* Transitions */
+
+.ease-in-animation {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.4s;
+}
+
+.delete-note-animation {
+	opacity: 1;
+	animation-name: fadeOutOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-duration: 0.4s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOutOpacity {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Modal animation */
+@keyframes animateShowModal {
+  0% {
+    opacity: 0.25;
+    top: -20px;
+  }
+  50% {
+    opacity: 0.6;
+    top: -10px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes animateHideModal {
+  0% {
+    opacity: 1;
+    top: 0px;
+  }
+  50% {
+    opacity: 0.5;
+    top: -10px;
+  }
+  100% {
+    opacity: 0;
+    top: -20px;
+  }
+}
+
+.show-modal-animation {
+  width: 100%;
+  animation-name: animateShowModal;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.hide-modal-animation {
+  width: 100%;
+  animation-name: animateHideModal;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
 }
