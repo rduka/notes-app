@@ -1,7 +1,9 @@
 
-## Manage your work, home, personal tasks with notes app. It provides the functionality to add, edit, delete, and mark them as completed. Additional features include searching, filtering and visualizing completion progress.
+## Manage your work, home, personal tasks with a simple yet intuitive notes app. 
 
 [Design](https://xd.adobe.com/view/6d90cf5b-ef85-403f-a312-db49ecde1218-38c3) by [Milena Ulman](https://www.behance.net/milenaulman).
+
+You can browse the deployed app [here](https://rduka-notes-app.herokuapp.com/).
 
 ## Technologies & Tools
 - React
@@ -20,14 +22,14 @@
 - Users can see created, colored notes sorted by date as well as an empty UI with illustration when there are no notes or couldn't be found.
 - Users can see how many notes are completed including the visual progression indicator.
 - Users can mark notes as completed, edit, and delete them.
-- Completed notes have strikethrough text and gray background. Also, they are moved into the end.
+- Completed notes have strikethrough text and gray background. 
 - When editing notes, the date of note also updates all together with other fields.
 - Confirmation pops up when deleting notes.
 
 ## Additional Features
 
+- At start up some notes are mocked
 - Notes data stored in LocalStorage
-- Ability to mock notes if notes list is empty
 - Optimized for mobile (not 100% finished... still work in progress)
 
 ## Project setup
